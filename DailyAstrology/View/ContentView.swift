@@ -9,9 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var vm = HoroscopesViewModel()
-    @State private var selection = "Aries"
-    let signs = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpius", "Sagittarius", "Capricornus", "Aquarius", "Pisces"]
-    
+    @State private var selection = Constants.default_sign
+  
     var body: some View {
         
         
@@ -19,7 +18,7 @@ struct ContentView: View {
             VStack {
                 Text("Pick your Zodiac Sign:")
                 Picker("Select a paint color", selection: $selection) {
-                    ForEach(signs, id: \.self) {
+                    ForEach(Constants.sign_params, id: \.self) {
                         Text($0)
                     }
                 }
@@ -32,7 +31,6 @@ struct ContentView: View {
                 } label : {
                     Text("Get my horoscope!")
                 }
-                
             }
             .padding()
         }

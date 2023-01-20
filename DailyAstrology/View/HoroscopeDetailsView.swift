@@ -44,6 +44,6 @@ struct HoroscopeDetailsView: View {
 
 struct HoroscopeDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        HoroscopeDetailsView(horoscopeList: Horoscope.horoscope_example)
+        HoroscopeDetailsView(horoscopeList: Horoscope.horoscopeList_example)
     }
 }
