@@ -9,16 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var vm = HoroscopesViewModel()
-    @State private var selection = Constants.default_sign
+    @State private var selection = Constants.DEFAULT_SIGN
   
     var body: some View {
         
         
         NavigationStack{
             VStack {
-                Text("Pick your Zodiac Sign:")
-                Picker("Select a paint color", selection: $selection) {
-                    ForEach(Constants.sign_params, id: \.self) {
+                Text(Constants.PICK_HOROSCOPE_MESSAGE)
+                
+                Picker("Select a sign", selection: $selection) {
+                    ForEach(Constants.SIGN_PARAMS, id: \.self) {
                         Text($0)
                     }
                 }
@@ -29,7 +30,7 @@ struct ContentView: View {
                 NavigationLink {
                     HoroscopeDetailsView(horoscopeList: vm.horoscopeList)
                 } label : {
-                    Text("Get my horoscope!")
+                    Text(Constants.GET_HOROSCOPE_BTN)
                 }
             }
             .padding()

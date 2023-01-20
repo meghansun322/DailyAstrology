@@ -10,9 +10,8 @@ import SwiftUI
 struct HoroscopeDetailsView: View {
     
     // default date to show
-    @State var showingDate = "today"
+    @State var showingDate = Constants.DEFAULT_DAY
     @State var horoscopeList: [String: Horoscope]
-    
 
     
     var body: some View {
@@ -23,18 +22,17 @@ struct HoroscopeDetailsView: View {
             Text(horoscopeList[showingDate]!.current_date)
             Text(horoscopeList[showingDate]!.description)
             
+            Spacer()
             HStack{
-                Button("Yesterday"){
-                    showingDate = "yesterday"
-                }
+                DateButtonView(showingDate: $showingDate, date: Constants.DAY_YESTERDAY)
                 
-                Button("Today"){
-                    showingDate = "today"
-                }
+                Spacer()
                 
-                Button("Tomorrow"){
-                    showingDate = "tomorrow"
-                }
+                DateButtonView(showingDate: $showingDate, date: Constants.DAY_TODAY)
+                
+                Spacer()
+                
+                DateButtonView(showingDate: $showingDate, date: Constants.DAY_TOMORROW)
                 
             }
         }
@@ -45,5 +43,17 @@ struct HoroscopeDetailsView: View {
 struct HoroscopeDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         HoroscopeDetailsView(horoscopeList: Horoscope.horoscopeList_example)
+    }
+}
+
+struct DateButtonView: View {
+    @Binding var showingDate: String
+    var date: String
+    
+    var body: some View {
+        Button(date){
+            showingDate = date.lowercased()
+        }
+        .disabled(showingDate == date.lowercased())
     }
 }
