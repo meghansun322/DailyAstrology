@@ -11,6 +11,10 @@
 		245265C52979DA1F00CC8539 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245265C42979DA1F00CC8539 /* ContentView.swift */; };
 		245265C72979DA2100CC8539 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 245265C62979DA2100CC8539 /* Assets.xcassets */; };
 		245265CA2979DA2100CC8539 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 245265C92979DA2100CC8539 /* Preview Assets.xcassets */; };
+		245265D52979DC0500CC8539 /* AstroService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245265D42979DC0500CC8539 /* AstroService.swift */; };
+		245265D72979DCC000CC8539 /* Horoscope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245265D62979DCC000CC8539 /* Horoscope.swift */; };
+		245265D92979E22C00CC8539 /* HoroscopeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245265D82979E22C00CC8539 /* HoroscopeViewModel.swift */; };
+		245265DB297AC26400CC8539 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245265DA297AC26400CC8539 /* ResultsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		245265C42979DA1F00CC8539 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		245265C62979DA2100CC8539 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		245265C92979DA2100CC8539 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		245265D42979DC0500CC8539 /* AstroService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroService.swift; sourceTree = "<group>"; };
+		245265D62979DCC000CC8539 /* Horoscope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Horoscope.swift; sourceTree = "<group>"; };
+		245265D82979E22C00CC8539 /* HoroscopeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeViewModel.swift; sourceTree = "<group>"; };
+		245265DA297AC26400CC8539 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +59,10 @@
 		245265C12979DA1F00CC8539 /* DailyAstrology */ = {
 			isa = PBXGroup;
 			children = (
+				245265D22979DAAE00CC8539 /* Model */,
+				245265D02979DA9700CC8539 /* View */,
+				245265D32979DACF00CC8539 /* ViewModels */,
 				245265C22979DA1F00CC8539 /* DailyAstrologyApp.swift */,
-				245265C42979DA1F00CC8539 /* ContentView.swift */,
 				245265C62979DA2100CC8539 /* Assets.xcassets */,
 				245265C82979DA2100CC8539 /* Preview Content */,
 			);
@@ -65,6 +75,32 @@
 				245265C92979DA2100CC8539 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		245265D02979DA9700CC8539 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				245265C42979DA1F00CC8539 /* ContentView.swift */,
+				245265DA297AC26400CC8539 /* ResultsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		245265D22979DAAE00CC8539 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				245265D42979DC0500CC8539 /* AstroService.swift */,
+				245265D62979DCC000CC8539 /* Horoscope.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		245265D32979DACF00CC8539 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				245265D82979E22C00CC8539 /* HoroscopeViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +173,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				245265D92979E22C00CC8539 /* HoroscopeViewModel.swift in Sources */,
+				245265DB297AC26400CC8539 /* ResultsView.swift in Sources */,
+				245265D72979DCC000CC8539 /* Horoscope.swift in Sources */,
+				245265D52979DC0500CC8539 /* AstroService.swift in Sources */,
 				245265C52979DA1F00CC8539 /* ContentView.swift in Sources */,
 				245265C32979DA1F00CC8539 /* DailyAstrologyApp.swift in Sources */,
 			);
