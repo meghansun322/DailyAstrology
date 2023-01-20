@@ -8,31 +8,34 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var sign: String = ""
-    @State var day: String = ""
-    @StateObject var vm = HoroscopeViewModel()
-    
-
+    @StateObject var vm = HoroscopesViewModel()
+    @State private var selection = "Aries"
+    let signs = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpius", "Sagittarius", "Capricornus", "Aquarius", "Pisces"]
     
     var body: some View {
         
         
-        VStack {
-           
-            if (vm.horoscope != nil) {
-                Text(vm.horoscope!.lucky_number)
-                Text(vm.horoscope!.description)
+        NavigationStack{
+            VStack {
+                Text("Pick your Zodiac Sign:")
+                Picker("Select a paint color", selection: $selection) {
+                    ForEach(signs, id: \.self) {
+                        Text($0)
+                    }
+                }
+                .onChange(of: selection) { value in
+                    vm.getHoroscopes(sign: selection)
+                }
+                
+                NavigationLink {
+                    HoroscopeDetailsView(horoscopeList: vm.horoscopeList)
+                } label : {
+                    Text("Get my horoscope!")
+                }
+                
             }
-            
-            Button {
-                vm.getHoroscope(sign: "aries", day: "yesterday")
-               
-            } label: {
-                Text("Get Horoscope")
-              
-            }
+            .padding()
         }
-        .padding()
     }
 }
 
