@@ -12,37 +12,54 @@ struct HoroscopeDetailsView: View {
     // default date to show
     @State var showingDate = Constants.DEFAULT_DAY
     @State var horoscopeList: [String: Horoscope]
-
+    @State var selectedSign: String
     
     var body: some View {
         
-        
-        VStack {
-           
-            Text(horoscopeList[showingDate]!.current_date)
-            Text(horoscopeList[showingDate]!.description)
-            
-            Spacer()
-            HStack{
-                DateButtonView(showingDate: $showingDate, date: Constants.DAY_YESTERDAY)
+        NavigationStack {
+            VStack(alignment: .leading) {
+              
+                Text(horoscopeList[showingDate]!.current_date)
+                    .padding(.bottom, 10)
+                
+                HoroscopeSectionView(title: "Description", text: horoscopeList[showingDate]!.description)
+                
+                HoroscopeSectionView(title: "Compatibility", text: horoscopeList[showingDate]!.compatibility)
+                HoroscopeSectionView(title: "Mood", text: horoscopeList[showingDate]!.mood)
+                
+                HoroscopeSectionView(title: "Color", text: horoscopeList[showingDate]!.color)
+                
+                HoroscopeSectionView(title: "Lucky Number", text: horoscopeList[showingDate]!.lucky_number)
+                
+                HoroscopeSectionView(title: "Lucky Time", text: horoscopeList[showingDate]!.lucky_time)
+                
                 
                 Spacer()
                 
-                DateButtonView(showingDate: $showingDate, date: Constants.DAY_TODAY)
-                
-                Spacer()
-                
-                DateButtonView(showingDate: $showingDate, date: Constants.DAY_TOMORROW)
-                
+                HStack{
+                    Spacer()
+                    DateButtonView(showingDate: $showingDate, date: Constants.DAY_YESTERDAY)
+                    
+                    Spacer()
+                    
+                    DateButtonView(showingDate: $showingDate, date: Constants.DAY_TODAY)
+                    
+                    Spacer()
+                    
+                    DateButtonView(showingDate: $showingDate, date: Constants.DAY_TOMORROW)
+                    Spacer()
+                }
             }
+            .padding()
         }
-        .padding()
+        .navigationTitle(selectedSign)
     }
+        
 }
 
 struct HoroscopeDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        HoroscopeDetailsView(horoscopeList: Horoscope.horoscopeList_example)
+        HoroscopeDetailsView(horoscopeList: Horoscope.horoscopeList_example, selectedSign: "Aries")
     }
 }
 
@@ -57,3 +74,21 @@ struct DateButtonView: View {
         .disabled(showingDate == date.lowercased())
     }
 }
+
+struct HoroscopeSectionView: View {
+    var title: String
+    var text: String
+    
+    var body: some View {
+        VStack (alignment: .leading){
+            Text(title)
+                .font(.title2)
+                .fontWeight(.bold)
+            Text(text)
+                .padding(.bottom, 10)
+        }
+    }
+}
+
+
+
