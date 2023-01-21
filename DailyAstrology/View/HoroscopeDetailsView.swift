@@ -14,46 +14,58 @@ struct HoroscopeDetailsView: View {
     @State var horoscopeList: [String: Horoscope]
     @State var selectedSign: String
     
+    @State var start = UnitPoint(x: 0, y: 0)
+    @State var end = UnitPoint(x: 1, y: 1)
+    let colors = [Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)), Color(#colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)), Color(#colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)), Color(#colorLiteral(red: 0.337254902, green: 0.1137254902, blue: 0.7490196078, alpha: 1)), Color(#colorLiteral(red: 0.337254902, green: 0.9215686275, blue: 0.8509803922, alpha: 1))]
+    
     var body: some View {
         
         NavigationStack {
-            VStack(alignment: .leading) {
-              
-                Text(horoscopeList[showingDate]!.current_date)
-                    .padding(.bottom, 10)
+            ZStack {
+                LinearGradient(gradient: Gradient(colors: colors), startPoint: start, endPoint: end)
+                    .edgesIgnoringSafeArea(.all)
+                    .opacity(0.85)
                 
-                HoroscopeSectionView(title: "Description", text: horoscopeList[showingDate]!.description)
-                
-                HoroscopeSectionView(title: "Compatibility", text: horoscopeList[showingDate]!.compatibility)
-                HoroscopeSectionView(title: "Mood", text: horoscopeList[showingDate]!.mood)
-                
-                HoroscopeSectionView(title: "Color", text: horoscopeList[showingDate]!.color)
-                
-                HoroscopeSectionView(title: "Lucky Number", text: horoscopeList[showingDate]!.lucky_number)
-                
-                HoroscopeSectionView(title: "Lucky Time", text: horoscopeList[showingDate]!.lucky_time)
-                
-                
-                Spacer()
-                
-                HStack{
-                    Spacer()
-                    DateButtonView(showingDate: $showingDate, date: Constants.DAY_YESTERDAY)
+                VStack(alignment: .leading) {
+                    
+                    Text(horoscopeList[showingDate]!.current_date)
+                        .padding(.bottom, 10)
+                    
+                    HoroscopeSectionView(title: "Description", text: horoscopeList[showingDate]!.description)
+                    
+                    HoroscopeSectionView(title: "Compatibility", text: horoscopeList[showingDate]!.compatibility)
+                    HoroscopeSectionView(title: "Mood", text: horoscopeList[showingDate]!.mood)
+                    
+                    HoroscopeSectionView(title: "Color", text: horoscopeList[showingDate]!.color)
+                    
+                    HoroscopeSectionView(title: "Lucky Number", text: horoscopeList[showingDate]!.lucky_number)
+                    
+                    HoroscopeSectionView(title: "Lucky Time", text: horoscopeList[showingDate]!.lucky_time)
+                    
                     
                     Spacer()
                     
-                    DateButtonView(showingDate: $showingDate, date: Constants.DAY_TODAY)
-                    
-                    Spacer()
-                    
-                    DateButtonView(showingDate: $showingDate, date: Constants.DAY_TOMORROW)
-                    Spacer()
+                    HStack{
+                        Spacer()
+                        DateButtonView(showingDate: $showingDate, date: Constants.DAY_YESTERDAY)
+                        
+                        Spacer()
+                        
+                        DateButtonView(showingDate: $showingDate, date: Constants.DAY_TODAY)
+                        
+                        Spacer()
+                        
+                        DateButtonView(showingDate: $showingDate, date: Constants.DAY_TOMORROW)
+                        Spacer()
+                    }
                 }
+                .padding()
+               
             }
-            .padding()
         }
         .navigationTitle(selectedSign)
     }
+       
         
 }
 

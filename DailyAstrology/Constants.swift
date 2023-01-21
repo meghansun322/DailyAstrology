@@ -8,8 +8,7 @@
 import Foundation
 
 struct Constants {
-    
-    
+
     static let DAY_PARAMS: [String] = ["yesterday", "today", "tomorrow"]
     static let DAY_YESTERDAY = "Yesterday"
     static let DAY_TODAY = "Today"
@@ -22,7 +21,7 @@ struct Constants {
     
     static let PICK_HOROSCOPE_MESSAGE = "Pick your Zodiac Sign:"
     
-    static let SIGN_PARAMS = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpius", "Sagittarius", "Capricornus", "Aquarius", "Pisces"]
+    static let SIGN_PARAMS = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]
     
     
     
