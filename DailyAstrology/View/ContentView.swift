@@ -8,48 +8,85 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var vm = HoroscopesViewModel()
-    @State private var selection = Constants.DEFAULT_SIGN
-    @State var start = UnitPoint(x: 0, y: 0)
-    @State var end = UnitPoint(x: 1, y: 1)
-    let colors = [Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)), Color(#colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)), Color(#colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)), Color(#colorLiteral(red: 0.337254902, green: 0.1137254902, blue: 0.7490196078, alpha: 1)), Color(#colorLiteral(red: 0.337254902, green: 0.9215686275, blue: 0.8509803922, alpha: 1))]
-    var body: some View {
+    @AppStorage("welcomeScreenShown")
+    var welcomeScreenShown = false
     
-            NavigationStack{
-                ZStack {
-                    LinearGradient(gradient: Gradient(colors: colors), startPoint: start, endPoint: end)
-                            .edgesIgnoringSafeArea(.all)
+    @StateObject var vm = HoroscopesViewModel()
+    @State private var selection = Constants.Default.SELECTION
+    @State private var getMyHoroscope = false
+    
+    let columns = [
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+            
+    ]
+    
+    var body: some View {
+        
+        NavigationStack{
+            ZStack {
+                gradientBackground
                 
-                
-                    VStack(alignment: .leading){
-                    Text(Constants.PICK_HOROSCOPE_MESSAGE)
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                        
+                VStack(){
                     
-                    Picker("Select a sign", selection: $selection) {
-                        ForEach(Constants.SIGN_PARAMS, id: \.self) {
-                            Text($0)
+                    selectTitle
+                    
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(Constants.Params.SIGN, id: \.self) {
+                            GridItemView(sign: $0, selection: $selection, vm: vm)
+                                .padding(.bottom, 10)
                         }
                     }
-                    .pickerStyle(.menu)
-                    .onChange(of: selection) { value in
-                        vm.getHoroscopes(sign: selection)
-                    }
                     
+                    Spacer()
                     
-                    NavigationLink {
-                        HoroscopeDetailsView(horoscopeList: vm.horoscopeList, selectedSign: selection)
-                    } label : {
-                        Text(Constants.GET_HOROSCOPE_BTN)
-                    }
+                    getHoroscopeButton
+                    
+                    Spacer()
+                    
                 }
                 .padding()
+    
             }
             
         }
+        
     }
+    
+    var getHoroscopeButton: some View {
+        Button {
+            getMyHoroscope.toggle()
+            
+        } label: {
+           Text(Constants.GET_HOROSCOPE_BTN)
+                .fontWeight(.bold)
+                .frame(maxWidth: .infinity, maxHeight: 30)
+        }
+        .sheet(isPresented: $getMyHoroscope ){
+            HoroscopeDetailsView(horoscopeList: vm.horoscopeList, selectedSign: selection)
+        }
+        .foregroundColor(selection.isEmpty ? Color("light-gray") : .white)
+        .buttonStyle(.borderedProminent)
+        .tint(.purple)
+        .disabled(selection.isEmpty)
+        
+    }
+    
+    var gradientBackground: some View {
+        LinearGradient(gradient: Gradient(colors: Constants.Gradient.COLORS), startPoint: Constants.Gradient.START, endPoint: Constants.Gradient.END)
+            .edgesIgnoringSafeArea(.all)
+    }
+    
+    var selectTitle: some View {
+        Text(Constants.PICK_HOROSCOPE_MESSAGE)
+            .font(.largeTitle)
+            .fontWeight(.bold)
+            .foregroundColor(.white)
+            .padding([.top, .bottom])
+    }
+    
+   
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -57,3 +94,5 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+

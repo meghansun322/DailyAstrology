@@ -15,7 +15,7 @@ class HoroscopesViewModel: ObservableObject {
     @Published var horoscopeList = [String: Horoscope]()
     
     func getHoroscopes(sign: String) {
-        for day_param in Constants.DAY_PARAMS {
+        for day_param in Constants.Params.DAY {
             AstroService().postRequest(sign: sign, day: day_param, completion: { result in
                 DispatchQueue.main.async {
                     switch result {

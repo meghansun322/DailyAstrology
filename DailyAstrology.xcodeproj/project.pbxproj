@@ -17,6 +17,8 @@
 		245265DD297ADF3F00CC8539 /* HoroscopeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245265DC297ADF3F00CC8539 /* HoroscopeDetailsView.swift */; };
 		245265DF297AE84000CC8539 /* HoroscopeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245265DE297AE84000CC8539 /* HoroscopeViewModel.swift */; };
 		245265E1297AF9D500CC8539 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245265E0297AF9D500CC8539 /* Constants.swift */; };
+		24C78D3A297C612C00F22383 /* GridItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C78D39297C612C00F22383 /* GridItemView.swift */; };
+		24C78D3E297C848D00F22383 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24C78D3D297C848D00F22383 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		245265DC297ADF3F00CC8539 /* HoroscopeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeDetailsView.swift; sourceTree = "<group>"; };
 		245265DE297AE84000CC8539 /* HoroscopeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeViewModel.swift; sourceTree = "<group>"; };
 		245265E0297AF9D500CC8539 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		24C78D39297C612C00F22383 /* GridItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridItemView.swift; sourceTree = "<group>"; };
+		24C78D3D297C848D00F22383 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,8 @@
 			children = (
 				245265C42979DA1F00CC8539 /* ContentView.swift */,
 				245265DC297ADF3F00CC8539 /* HoroscopeDetailsView.swift */,
+				24C78D39297C612C00F22383 /* GridItemView.swift */,
+				24C78D3D297C848D00F22383 /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -167,6 +173,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24C78D3E297C848D00F22383 /* LaunchScreen.storyboard in Resources */,
 				245265CA2979DA2100CC8539 /* Preview Assets.xcassets in Resources */,
 				245265C72979DA2100CC8539 /* Assets.xcassets in Resources */,
 			);
@@ -180,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				245265D92979E22C00CC8539 /* HoroscopesViewModel.swift in Sources */,
+				24C78D3A297C612C00F22383 /* GridItemView.swift in Sources */,
 				245265DF297AE84000CC8539 /* HoroscopeViewModel.swift in Sources */,
 				245265D72979DCC000CC8539 /* Horoscope.swift in Sources */,
 				245265DD297ADF3F00CC8539 /* HoroscopeDetailsView.swift in Sources */,
@@ -317,9 +325,11 @@
 				DEVELOPMENT_ASSET_PATHS = "\"DailyAstrology/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Daily Astrology";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -345,9 +355,11 @@
 				DEVELOPMENT_ASSET_PATHS = "\"DailyAstrology/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Daily Astrology";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
