@@ -67,7 +67,7 @@
 			children = (
 				245265D22979DAAE00CC8539 /* Model */,
 				245265D02979DA9700CC8539 /* View */,
-				245265D32979DACF00CC8539 /* ViewModels */,
+				245265D32979DACF00CC8539 /* View Model */,
 				245265C22979DA1F00CC8539 /* DailyAstrologyApp.swift */,
 				245265E0297AF9D500CC8539 /* Constants.swift */,
 				245265C62979DA2100CC8539 /* Assets.xcassets */,
@@ -103,13 +103,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		245265D32979DACF00CC8539 /* ViewModels */ = {
+		245265D32979DACF00CC8539 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
 				245265D82979E22C00CC8539 /* HoroscopesViewModel.swift */,
 				245265DE297AE84000CC8539 /* HoroscopeViewModel.swift */,
 			);
-			path = ViewModels;
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
