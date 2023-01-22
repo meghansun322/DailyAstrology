@@ -16,10 +16,11 @@ class HoroscopesViewModel: ObservableObject {
     // dictionary [DAY_PARAM: HOROSCOPE] -- intialized by getHoroscopes()
     @Published var horoscopeSet = [String: Horoscope]()
     
+    // post and fetches for all three day params
     func getHoroscopes(sign: String) {
         for day_param in Constants.Params.DAY {
             AstroService().postRequest(sign: sign, day: day_param, completion: { result in
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { // UI changes on main thread
                     switch result {
                     case .success(let response):
                         self.horoscopeSet[day_param] = response

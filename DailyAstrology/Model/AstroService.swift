@@ -34,14 +34,13 @@ class AstroService {
             return
         }
         
-//      print(baseURL)
+      print(baseURL)
         
         var request = URLRequest(url: requestURL)
         
         // Request Details
         request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-      
+        
         // Process the Request
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
