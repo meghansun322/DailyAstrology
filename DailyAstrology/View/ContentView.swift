@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @AppStorage("welcomeScreenShown")
-    var welcomeScreenShown = false
-    
+
     @StateObject var vm = HoroscopesViewModel()
     @State private var selection = Constants.Default.SELECTION
     @State private var getMyHoroscope = false
@@ -64,7 +62,7 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, maxHeight: 30)
         }
         .sheet(isPresented: $getMyHoroscope ){
-            HoroscopeDetailsView(horoscopeList: vm.horoscopeList, selectedSign: selection)
+            HoroscopeView(vm: HoroscopeViewModel(horoscopeSet: vm.horoscopeSet))
         }
         .foregroundColor(selection.isEmpty ? Color("light-gray") : .white)
         .buttonStyle(.borderedProminent)
@@ -92,6 +90,37 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct GridItemView: View {
+    var sign: String
+ 
+    @Binding var selection: String
+    @ObservedObject var vm: HoroscopesViewModel
+    
+    var body: some View {
+        Button(action: {
+            selection = sign
+            vm.getHoroscopes(sign: selection)
+        }, label: {
+            VStack{
+               
+                Text(sign.capitalized)
+                    .foregroundColor(.white)
+                    .font(.subheadline)
+                    .fontWeight(.bold)
+                    .padding(.bottom, 5)
+                
+                Text(Constants.SIGN_DATE[sign]!)
+                    .font(.caption)
+                    .foregroundColor(.white)
+            }
+        })
+        .frame(width: 105, height: 105)
+        .background(selection == sign ? Color("selected-sign"): Color("clear"))
+        .clipShape(Rectangle())
+        .cornerRadius(10)
     }
 }
 

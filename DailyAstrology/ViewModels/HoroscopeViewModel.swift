@@ -10,9 +10,15 @@ import Foundation
 class HoroscopeViewModel: ObservableObject {
     
     @Published var model: Horoscope
+    @Published var showingDate: String // default is "today" (shows horoscope for today)
     
-    init(horoscope: Horoscope){
-        self.model = horoscope
+    var horoscopeSet: [String: Horoscope] // [DAY_PARAM: HOROSCOPE]
+    
+    // Constructor takes in Horoscope dictionary and default set model to "today"
+    init(horoscopeSet: [String: Horoscope]){
+        self.horoscopeSet = horoscopeSet
+        self.model = horoscopeSet[Constants.Default.DAY]!
+        self.showingDate = Constants.Default.DAY
     }
     
     var date_range: String {
@@ -46,4 +52,12 @@ class HoroscopeViewModel: ObservableObject {
     var lucky_time: String {
         return model.lucky_time
     }
+    
+    // Used to switch between horoscope readings of DAY PARAMS
+    func switchDate(date: String) {
+        self.model = horoscopeSet[date]!
+        self.showingDate = date
+   
+    }
+    
 }

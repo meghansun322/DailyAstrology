@@ -12,7 +12,9 @@ import SwiftUI
 class HoroscopesViewModel: ObservableObject {
     @Published var sign: String = ""
     @Published var day: String = ""
-    @Published var horoscopeList = [String: Horoscope]()
+    
+    // dictionary [DAY_PARAM: HOROSCOPE] -- intialized by getHoroscopes()
+    @Published var horoscopeSet = [String: Horoscope]()
     
     func getHoroscopes(sign: String) {
         for day_param in Constants.Params.DAY {
@@ -20,7 +22,7 @@ class HoroscopesViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let response):
-                        self.horoscopeList[day_param] = response
+                        self.horoscopeSet[day_param] = response
                     case .failure (let error):
                         print("Aw no, an error has occured \(error)")
                     }
